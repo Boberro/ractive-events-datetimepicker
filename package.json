@@ -7,7 +7,10 @@
 	"main": "ractive-events-datetimepicker.js",
 	"description": "ractive-events-datetimepicker plugin for Ractive.js",
 	"dependencies": {
-		"ractive": "^0.5.4"
+	"bootstrap": "^3.3.6",
+	"jquery": "^2.2.0",
+	"moment": "^2.11.1",
+	"ractive": "^0.5.4"
 	},
 	"devDependencies": {
 		"grunt": "~0.4.5",

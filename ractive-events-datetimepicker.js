@@ -3,7 +3,7 @@
 	ractive-events-datetimepicker
 	=============================
 
-	Version <%= pkg.version %>.
+	Version 0.1.0.
 
 	<< description goes here... >>
 
@@ -36,27 +36,45 @@
 
 	// AMD environment
 	if ( typeof define === 'function' && define.amd ) {
-		define([ 'ractive' ], factory );
+		define([ 'ractive', 'jquery' ], factory );
 	}
 
 	// Common JS (i.e. node/browserify)
 	else if ( typeof module !== 'undefined' && module.exports && typeof require === 'function' ) {
-		factory( require( 'ractive' ) );
+		factory( require( 'ractive' ), require( 'jquery' ) );
 	}
 
 	// browser global
-	else if ( global.Ractive ) {
-		factory( global.Ractive );
+	else if ( global.Ractive && global.jQuery ) {
+		factory( global.Ractive, global.jQuery );
 	}
 
 	else {
-		throw new Error( 'Could not find Ractive! It must be loaded before the ractive-events-datetimepicker plugin' );
+		throw new Error( 'Could not find Ractive or jQuery! It must be loaded before the ractive-events-datetimepicker plugin' );
 	}
 
-}( typeof window !== 'undefined' ? window : this, function ( Ractive ) {
+}( typeof window !== 'undefined' ? window : this, function ( Ractive, $ ) {
 
 	'use strict';
 
 	/* plugin code goes here */
+
+	Ractive.events.dpchange = function (node, fire) {
+	    var dpChangeHandler = function (event) {
+	        //event.preventDefault();
+	        fire({
+	            node: node,
+	            original: event
+	        });
+	    };
+
+	    $(node).on('dp.change', dpChangeHandler);
+
+	    return {
+	        teardown: function () {
+	            $(node).off('dp.change', dpChangeHandler);
+	        }
+	    };
+	};
 
 }));
