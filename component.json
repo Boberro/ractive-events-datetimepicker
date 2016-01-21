@@ -1,0 +1,16 @@
+{
+	"name": "ractive-events-datetimepicker",
+	"repo": "git://github.com/boberro/ractive-events-datetimepicker.git",
+	"description": "ractive-events-datetimepicker",
+	"version": "0.1.0",
+	"keywords": [],
+	"dependencies": {
+		"ractivejs/ractive": "^0.5.4"
+	},
+	"development": {},
+	"license": "MIT",
+	"main": "ractive-events-datetimepicker.js",
+	"scripts": [
+		"ractive-events-datetimepicker.js"
+	]
+}
